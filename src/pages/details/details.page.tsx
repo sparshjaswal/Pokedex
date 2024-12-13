@@ -6,47 +6,44 @@ import DetailsHeader from '../../components/pokemonDetailsCard/detailsHeader/det
 import PropertyCard from '../../components/pokemonDetailsCard/propertyCard/propertyCard';
 import StatCard from '../../components/pokemonDetailsCard/statCard/statCard';
 import EvolutionChainCard from '../../components/pokemonDetailsCard/evolutionChainCard/evolutionChainCard';
-import PropTypes from 'prop-types';
+import { DetailPageProps, PokemonData, SpeciesData, TypeData } from '../../constants/pokemon.types';
 
-
-const DetailPage = ({ isCardSelected, toggleModal, pokemonId, offset }) => {
-
-    const [currentPokemonId, setCurrentPokemonId] = useState(pokemonId);
+const DetailPage: React.FC<DetailPageProps> = ({ isCardSelected, toggleModal, pokemonId, offset }) => {
+    const [currentPokemonId, setCurrentPokemonId] = useState<number>(pokemonId);
     const handleClose = () => toggleModal();
-    const [data, setPokemonData] = useState();
-    const [isDetailLoading, setLoading] = useState(true);
-    const [isModalOpen, setCloseModal] = useState(isCardSelected);
-    const [pokemonSpeciesData, setPokemonSpeciesData] = useState();
-    const [pokemonTypeData, setPokemonTypeData] = useState();
-
-
+    const [data, setPokemonData] = useState<PokemonData | null>(null);
+    const [isDetailLoading, setLoading] = useState<boolean>(true);
+    const [isModalOpen, setCloseModal] = useState<boolean>(isCardSelected);
+    const [pokemonSpeciesData, setPokemonSpeciesData] = useState<SpeciesData | null>(null);
+    const [pokemonTypeData, setPokemonTypeData] = useState<TypeData | null>(null);
 
     useEffect(() => {
         if (!currentPokemonId) return;
         (async function setPokemonDetails() {
-            setLoading(true)
+            setLoading(true);
             const response = await getPokemonDataById(currentPokemonId);
             setPokemonData(response);
             setLoading(false);
-            const pokemonSpeciesData = await getSpeciesDataById(currentPokemonId);
-            setPokemonSpeciesData(pokemonSpeciesData);
-            const pokemonTypeData = await getPokemonTypesById(currentPokemonId);
-            setPokemonTypeData(pokemonTypeData);
+            const speciesData = await getSpeciesDataById(currentPokemonId);
+            setPokemonSpeciesData(speciesData);
+            const typeData = await getPokemonTypesById(currentPokemonId);
+            setPokemonTypeData(typeData);
         })();
     }, [currentPokemonId]);
 
     const handleForwordClick = () => {
         if (currentPokemonId === offset) return;
         setCurrentPokemonId(currentPokemonId + 1);
-    }
+    };
+
     const handleBackwordClick = () => {
         if (currentPokemonId === 1) return;
         setCurrentPokemonId(currentPokemonId - 1);
-    }
+    };
 
     const closePopUp = () => {
-        setCloseModal(false)
-    }
+        setCloseModal(false);
+    };
 
     return (
         <>
@@ -62,7 +59,7 @@ const DetailPage = ({ isCardSelected, toggleModal, pokemonId, offset }) => {
                 {data ? (
                     <>
                         <div className="model-container">
-                            <Modal.Header closeButton={false} className="rs-modal-header-2" >
+                            <Modal.Header closeButton={false} className="rs-modal-header-2">
                                 {isDetailLoading && <Placeholder.Paragraph style={{ marginTop: 30 }} rows={5} graph="image" active />}
                                 {!isDetailLoading &&
                                     <div>
@@ -70,7 +67,9 @@ const DetailPage = ({ isCardSelected, toggleModal, pokemonId, offset }) => {
                                     </div>
                                 }
                                 <div className="padding-components">
-                                    {pokemonTypeData && (<PropertyCard speciesData={pokemonSpeciesData} data={data} pokemonTypeData={pokemonTypeData} />)}
+                                    {pokemonSpeciesData && pokemonTypeData && (
+                                        <PropertyCard speciesData={pokemonSpeciesData} data={data} pokemonTypeData={pokemonTypeData} />
+                                    )}
                                 </div>
                                 <div className="padding-components">
                                     {data.stats && (<StatCard stats={data.stats} />)}
@@ -78,29 +77,19 @@ const DetailPage = ({ isCardSelected, toggleModal, pokemonId, offset }) => {
                                 <div className="padding-components">
                                     <EvolutionChainCard data={data} />
                                 </div>
-
                             </Modal.Header>
                             <Modal.Body>
                                 {/* <PokemonCard data={data} /> */}
                             </Modal.Body>
                         </div>
                     </>
-
                 ) : (
                     <div style={{ textAlign: 'center' }}>
                         <Loader size="md" />
                     </div>
                 )}
-
             </Modal>
         </>
-    )
-}
-DetailPage.propTypes = {
-    isCardSelected: PropTypes.bool,
-    toggleModal: PropTypes.any,
-    pokemonId: PropTypes.number,
-    offset: PropTypes.number
-}
-
+    );
+};
 export default DetailPage;
