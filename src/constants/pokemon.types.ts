@@ -215,13 +215,13 @@ export interface PokemonCardProps {
     id: number;
     name?: string;
     types?: PokemonTypesData[];
-    sprites: {
+    sprites?: {
       other?: {
         dream_world?: {
           front_default?: string | null;
         };
       };
-      front_default: string | null;
+      front_default?: string | null;
     };
   };
   onClick?: () => void;
