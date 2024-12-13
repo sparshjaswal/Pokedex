@@ -1,10 +1,10 @@
-import { PokemonType, POKEMON_TYPE, PokemonTypeData, PokemonDescriptionData } from "./pokemon.types";
+import { PokemonType, POKEMON_TYPE, PokemonTypesData, PokemonDescriptionData } from "./pokemon.types";
 
 export const getPokcolor = (type: PokemonType): string => {
-  return POKEMON_TYPE[type]?.color || 'transparent'; // Return a default color if type is not found
+  return POKEMON_TYPE[type] ? POKEMON_TYPE[type].color : "C0DFDD";
 };
 
-export const getBackground = (pokemonTypes: PokemonTypeData[]): string => {
+export const getBackground = (pokemonTypes: PokemonTypesData[]): string => {
   let color = "";
   if (pokemonTypes.length) {
     const { type: { name: pokemontype1 } } = pokemonTypes[0];

@@ -24,32 +24,92 @@ export type PokemonType =
   | 'fairy'
   | 'shadow';
 
+
 export const POKEMON_TYPE: Record<PokemonType, PokemonTypeObject> = {
-  normal: { color: 'gray', hex: '#A8A878' },
-  fighting: { color: 'red', hex: '#C03028' },
-  flying: { color: 'lightblue', hex: '#A890F0' },
-  poison: { color: 'purple', hex: '#A040B0' },
-  ground: { color: 'brown', hex: '#E0C068' },
-  rock: { color: 'gray', hex: '#B8A038' },
-  bug: { color: 'green', hex: '#A8B820' },
-  ghost: { color: 'purple', hex: '#705898' },
-  steel: { color: 'silver', hex: '#B8B8D0' },
-  fire: { color: 'red', hex: '#F08030' },
-  water: { color: 'blue', hex: '#6890F0' },
-  grass: { color: 'green', hex: '#78C850' },
-  electric: { color: 'yellow', hex: '#F8D030' },
-  psychic: { color: 'pink', hex: '#F85888' },
-  ice: { color: 'lightblue', hex: '#98D8D8' },
-  dragon: { color: 'blue', hex: '#7038F8' },
-  dark: { color: 'black', hex: '#705848' },
-  fairy: { color: 'pink', hex: '#F0B6C1' },
-  shadow: { color: 'black', hex: '#000000' },
+  normal: {
+    color: "#DDCBD0",
+    hex: ""
+  },
+  fighting: {
+    color: "#FCC1B0",
+    hex: ""
+  },
+  flying: {
+    color: "#B2D2E8",
+    hex: ""
+  },
+  poison: {
+    color: "#CFB7ED",
+    hex: ""
+  },
+  ground: {
+    color: "#F4D1A6",
+    hex: ""
+  },
+  rock: {
+    color: "#C5AEA8",
+    hex: ""
+  },
+  bug: {
+    color: "#C1E0C8",
+    hex: ""
+  },
+  ghost: {
+    color: "#D7C2D7",
+    hex: ""
+  },
+  steel: {
+    color: "#C2D4CE",
+    hex: ""
+  },
+  fire: {
+    color: "#EDC2C4",
+    hex: ""
+  },
+  water: {
+    color: "#CBD5ED",
+    hex: ""
+  },
+  grass: {
+    color: "#C0D4C8",
+    hex: ""
+  },
+  electric: {
+    color: "#E2E2A0",
+    hex: ""
+  },
+  psychic: {
+    color: "#DDC0CF",
+    hex: ""
+  },
+  ice: {
+    color: "#C7D7DF",
+    hex: ""
+  },
+  dragon: {
+    color: "#CADCDF",
+    hex: ""
+  },
+  dark: {
+    color: "#C6C5E3",
+    hex: ""
+  },
+  fairy: {
+    color: "#E4C0CF",
+    hex: ""
+  },
+  shadow: {
+    color: "#CACACA",
+    hex: ""
+  }
 } as const;
 
-export interface PokemonTypeData {
+export interface PokemonTypesData {
   type: {
     name: PokemonType;
-  };
+    url: string;
+  },
+  slot: string;
 }
 
 export interface PokemonDescriptionData {
@@ -88,12 +148,6 @@ export interface Ability {
   };
 }
 
-export interface Type {
-  type: {
-    name: string;
-  };
-}
-
 export interface DamageRelations {
   double_damage_from: any;
   damage_relations: Array<{ name: string }>;
@@ -107,7 +161,7 @@ export interface Data {
   height: number;
   weight: number;
   abilities: Ability[];
-  types: Type[];
+  types: PokemonTypesData[];
 }
 
 export interface PropertyCardProps {
@@ -140,7 +194,7 @@ export interface PokemonData {
   height: number;
   weight: number;
   abilities: Ability[];
-  types: Type[];
+  types: PokemonTypesData[];
   stats?: Stat[];
 }
 
@@ -160,7 +214,7 @@ export interface PokemonCardProps {
   data: {
     id: number;
     name?: string;
-    types?: PokemonTypeData[];
+    types?: PokemonTypesData[];
     sprites: {
       other?: {
         dream_world?: {
@@ -208,7 +262,7 @@ export interface Pokemon {
   abilities?: Ability[];
   moves?: Move[];
   stats?: Stat[];
-  types?: Type[];
+  types?: PokemonTypesData[];
   species?: {
     name: string;
     url: string;

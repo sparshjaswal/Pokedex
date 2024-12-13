@@ -20,17 +20,17 @@ const HomePage = () => {
   const { pokemonsList, isLoading, isLoadMoreInprogress } = state;
 
   const pokemonsListView = useMemo(
-    () =>
-      pokemonsList?.map((data) => (
-        <div key={data.id} className="responsive">
+  () =>
+    pokemonsList?.map((data, index) => (
+      <div key={`${data.id}-${index}`} className="responsive">
         <PokemonCard key={data.id} data={data} onClick={() => {
           setPokemonId(data.id);
           toggleModal();
         }} />
-        </div>
-      )),
-    [pokemonsList]
-  );
+      </div>
+    )),
+  [pokemonsList]
+);
 
   const handleLoadMoreClick = () => {
     getPokemonData();
