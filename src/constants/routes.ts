@@ -1,4 +1,6 @@
-export const ROUTES: { [key: string]: string } = {
+const ROUTES : { [key: string]: string } = {
     HOME: "/",
     DETAILS: "/details",
 };
+
+export default ROUTES;
