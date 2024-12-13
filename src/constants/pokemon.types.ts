@@ -240,7 +240,7 @@ export interface DetailsHeaderProps {
   speciesData: any;
   backClick: () => void;
   closeClick: () => void;
-  forwordClick: () => void;
+  forwardClick: () => void;
 }
 
 export interface ColorfulTagProps {

@@ -1,5 +1,5 @@
-import {   getBackground, getPokemonDescription, getCamelCaseString, getPokemonBgColor } from './utils';
-import { POKEMON_TYPE, PokemonTypesData } from './pokemon.types';
+import { getPokemonBgColor, getBackground, getPokemonDescription, getCamelCaseString } from '../utils';
+import { POKEMON_TYPE, PokemonTypesData } from '../pokemon.types';
 
 describe('Pokemon Utils', () => {
   describe('getPokemonBgColor', () => {

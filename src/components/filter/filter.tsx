@@ -3,7 +3,7 @@ import { Col, Row } from 'rsuite';
 import { debounceTime, distinctUntilChanged, map, of } from 'rxjs';
 import { baseURL, SEARCH_SLICED } from '../../constants/apiUrls';
 import { AppFilterProps } from '../../constants/pokemon.types';
-import { getCamleCaseString } from '../../constants/utils';
+import { getCamelCaseString } from '../../constants/utils';
 import PokemonContext from '../../context/pokemonContext/pokemon.context';
 import { getAllParallelCall, getPokemonGenders, getPokemonTypes, removeDuplicateBy } from '../../services/common.service';
 import "./filter.scss";
@@ -15,7 +15,7 @@ const AppFilter: React.FC<AppFilterProps> = ({ isFilterEnable }) => {
     const { allPokemonsList, pokemonsTypes, pokemonGenderList } = state;
 
     const [isOpenTypeFilter, setIsOpenTypeFilter] = useState<boolean>(false);
-    const [isOpenGendreFilter, setIsOpenGenderFilter] = useState<boolean>(false);
+    const [isOpenGenderFilter, setIsOpenGenderFilter] = useState<boolean>(false);
 
     let data$ = of([]);
 
@@ -56,11 +56,11 @@ const AppFilter: React.FC<AppFilterProps> = ({ isFilterEnable }) => {
             isFilterEnable(false);
         }
 
-        data$.subscribe(pokemanList => {
-            if (pokemanList.length > SEARCH_SLICED) {
-                pokemanList = pokemanList.slice(0, SEARCH_SLICED)
+        data$.subscribe(pokemonList => {
+            if (pokemonList.length > SEARCH_SLICED) {
+                pokemonList = pokemonList.slice(0, SEARCH_SLICED)
             }
-            getPokemonDetailsListByUrl(pokemanList).then((res: any[]) => { filterPokemonData(res) });
+            getPokemonDetailsListByUrl(pokemonList).then((res: any[]) => { filterPokemonData(res) });
         });
         setAppLoading(false);
     }
@@ -115,7 +115,7 @@ const AppFilter: React.FC<AppFilterProps> = ({ isFilterEnable }) => {
 
     const setPokemonTypes = (data: any[]) => {
         if (data.length) {
-            data = data.map(item => ({ label: getCamleCaseString(item.name), value: item.url, url: item.url }));
+            data = data.map(item => ({ label: getCamelCaseString(item.name), value: item.url, url: item.url }));
             dispatch({
                 type: "ACTIONS.SET_POKEMON_TYPE",
                 payload: data
@@ -129,7 +129,7 @@ const AppFilter: React.FC<AppFilterProps> = ({ isFilterEnable }) => {
     }
 
     const setPokemonGendersList = (genderList: any[]) => {
-        genderList = genderList.map(item => ({ label: getCamleCaseString(item.name), value: item.url, url: item.url }));
+        genderList = genderList.map(item => ({ label: getCamelCaseString(item.name), value: item.url, url: item.url }));
         if (genderList.length) {
             dispatch({
                 type: "ACTIONS.SET_POKEMON_GENDER_LIST",
@@ -191,7 +191,7 @@ const AppFilter: React.FC<AppFilterProps> = ({ isFilterEnable }) => {
                             <div>
                                 <AppMultiSelectDropDown
                                     placeholder="Select Gender"
-                                    isOpen={isOpenGendreFilter} data={pokemonGenderList} label="Gender" onChangeHandler={onGenderChangeHandler} onOpenHandler={onOpenGenderHandler} onCloseHandler={onCloseGenderHandler} />
+                                    isOpen={isOpenGenderFilter} data={pokemonGenderList} label="Gender" onChangeHandler={onGenderChangeHandler} onOpenHandler={onOpenGenderHandler} onCloseHandler={onCloseGenderHandler} />
                             </div>
                         </Col>
                     </Row>

@@ -31,12 +31,12 @@ const DetailPage: React.FC<DetailPageProps> = ({ isCardSelected, toggleModal, po
         })();
     }, [currentPokemonId]);
 
-    const handleForwordClick = () => {
+    const handleForwardClick = () => {
         if (currentPokemonId === offset) return;
         setCurrentPokemonId(currentPokemonId + 1);
     };
 
-    const handleBackwordClick = () => {
+    const handleBackwardClick = () => {
         if (currentPokemonId === 1) return;
         setCurrentPokemonId(currentPokemonId - 1);
     };
@@ -63,7 +63,7 @@ const DetailPage: React.FC<DetailPageProps> = ({ isCardSelected, toggleModal, po
                                 {isDetailLoading && <Placeholder.Paragraph style={{ marginTop: 30 }} rows={5} graph="image" active />}
                                 {!isDetailLoading &&
                                     <div>
-                                        <DetailsHeader data={data} speciesData={pokemonSpeciesData} forwordClick={handleForwordClick} backClick={handleBackwordClick} closeClick={closePopUp} />
+                                        <DetailsHeader data={data} speciesData={pokemonSpeciesData} forwardClick={handleForwardClick} backClick={handleBackwardClick} closeClick={closePopUp} />
                                     </div>
                                 }
                                 <div className="padding-components">

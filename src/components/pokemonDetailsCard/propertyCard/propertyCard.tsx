@@ -1,10 +1,10 @@
 import React from 'react';
 import { Grid, Row, Col } from 'rsuite';
-import { getCamleCaseString } from '../../../constants/utils';
+import { getCamelCaseString } from '../../../constants/utils';
 import ColorfulTag from '../colorfulTags/colorfulTag';
 import "./propertyCard.scss";
 import "../../../styles/common.scss";
-import { PropertyCardProps, } from '../../../constants/pokemon.types';
+import { PropertyCardProps } from '../../../constants/pokemon.types';
 
 const PropertyCard: React.FC<PropertyCardProps> = React.memo(({ speciesData, data, pokemonTypeData }) => {
   return (
@@ -34,7 +34,7 @@ const PropertyCard: React.FC<PropertyCardProps> = React.memo(({ speciesData, dat
             <div className='prop-header-data'>
               {speciesData.egg_groups.map((item, index) => (
                 <span key={item.name}>
-                  {getCamleCaseString(item.name)}
+                  {getCamelCaseString(item.name)}
                   {index < speciesData.egg_groups.length - 1 && ', '}
                 </span>
               ))}
@@ -49,7 +49,7 @@ const PropertyCard: React.FC<PropertyCardProps> = React.memo(({ speciesData, dat
             <div className='prop-header-data'>
               {data.abilities.map((item, index) => (
                 <span key={item.ability.name}>
-                  {getCamleCaseString(item.ability.name)}
+                  {getCamelCaseString(item.ability.name)}
                   {index < data.abilities.length - 1 && ', '}
                 </span>
               ))}
@@ -61,7 +61,7 @@ const PropertyCard: React.FC<PropertyCardProps> = React.memo(({ speciesData, dat
             <span className="prop-header">Types</span>
             <div className='prop-header-data type-wrap'>
               {data.types.map((item) => (
-                <ColorfulTag key={item.type.name} className="pr-1" type={item.type.name} text={getCamleCaseString(item.type.name)} />
+                <ColorfulTag key={item.type.name} className="pr-1" type={item.type.name} text={getCamelCaseString(item.type.name)} />
               ))}
             </div>
           </div>
@@ -71,7 +71,7 @@ const PropertyCard: React.FC<PropertyCardProps> = React.memo(({ speciesData, dat
             <span className="prop-header">Weak Against </span>
             <div className='prop-header-data type-wrap'>
               {pokemonTypeData.damage_relations.double_damage_from.map((item: { name: any }) => (
-                <ColorfulTag key={item.name} className="pr-1" type={item.name} text={getCamleCaseString(item.name)} />
+                <ColorfulTag key={item.name} className="pr-1" type={item.name} text={getCamelCaseString(item.name)} />
               ))}
             </div>
           </div>

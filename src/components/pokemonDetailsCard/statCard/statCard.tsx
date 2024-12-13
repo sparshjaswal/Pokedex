@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'rsuite';
-import { getCamleCaseString } from '../../../constants/utils';
+import { getCamelCaseString } from '../../../constants/utils';
 import "./statCard.scss";
 import { StatCardProps } from "../../../constants/pokemon.types"
 
@@ -12,8 +12,8 @@ const StatCard: React.FC<StatCardProps> = ({ stats }) => {
     }
     const [firstName, lastName] = name.split("-");
     return firstName === "special" && lastName 
-      ? `Sp. ${getCamleCaseString(lastName)}`
-      : getCamleCaseString(firstName);
+      ? `Sp. ${getCamelCaseString(lastName)}`
+      : getCamelCaseString(firstName);
   };
 
   return (

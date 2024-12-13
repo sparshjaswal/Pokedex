@@ -1,4 +1,4 @@
-import { PokemonType, POKEMON_TYPE, PokemonTypesData, PokemonDescriptionData } from "./pokemon.types";
+import { PokemonType, POKEMON_TYPE, PokemonTypesData, PokemonDescriptionData } from "../pokemon.types";
 
 export const getPokemonBgColor = (type: PokemonType): string => {
   return POKEMON_TYPE[type] ? POKEMON_TYPE[type].color : "C0DFDD";

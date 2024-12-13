@@ -9,7 +9,7 @@ import "./detailsHeader.scss";
 import "../../../styles/common.scss";
 import { DetailsHeaderProps } from "../../../constants/pokemon.types";
 
-const DetailsHeader = ({ data, speciesData, backClick, closeClick, forwordClick }: DetailsHeaderProps) => {
+const DetailsHeader = ({ data, speciesData, backClick, closeClick, forwardClick }: DetailsHeaderProps) => {
 
   const getPokemonDescriptions = () => {
     if (speciesData && speciesData.flavor_text_entries) {
@@ -38,9 +38,9 @@ const DetailsHeader = ({ data, speciesData, backClick, closeClick, forwordClick 
               <div className="horizontal-line"></div>
               <div>
                 <div className="icon-wrap">
-                  <img src={backIcon} alt="back icon to go backword" onClick={backClick} onKeyDown={() => { }} role="presentation"></img>
-                  <img src={closeIcon} alt="close icon to go backword" onClick={closeClick} onKeyDown={() => { }} role="presentation"></img>
-                  <img src={rightIcon} alt="forword icon to go backword" onClick={forwordClick} onKeyDown={() => { }} role="presentation"></img>
+                  <img src={backIcon} alt="back icon to go backward" onClick={backClick} onKeyDown={() => { }} role="presentation"></img>
+                  <img src={closeIcon} alt="close icon to go backward" onClick={closeClick} onKeyDown={() => { }} role="presentation"></img>
+                  <img src={rightIcon} alt="forward icon to go backward" onClick={forwardClick} onKeyDown={() => { }} role="presentation"></img>
                 </div>
               </div>
             </div>
