@@ -7,7 +7,7 @@ import { getCamelCaseString } from '../../constants/utils';
 import PokemonContext from '../../context/pokemonContext/pokemon.context';
 import { getAllParallelCall, getPokemonGenders, getPokemonTypes, removeDuplicateBy } from '../../services/common.service';
 import "./filter.scss";
-import AppMultiSelectDropDown from './multiSelectdropDown/multiSelectdropDown';
+import AppMultiSelectDropDown from './multiSelectdropDown/multiSelectDropDown';
 import SearchFilter from './search/search.filter';
 
 const AppFilter: React.FC<AppFilterProps> = ({ isFilterEnable }) => {
