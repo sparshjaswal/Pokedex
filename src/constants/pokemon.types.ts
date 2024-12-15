@@ -308,13 +308,13 @@ export interface PokemonGender {
 }
 
 export interface PokemonState {
-  pokemonsList: PokemonList[];
-  allPokemonsList: Pokemon[];
+  pokemonList: PokemonList[];
+  allPokemonList: Pokemon[];
   pokemonSelectedId: number | null;
   pokemonData: Pokemon | null;
   isLoading: boolean;
   isLoadMoreInprogress: boolean;
-  pokemonsTypes: PokemonType[];
+  pokemonTypes: PokemonType[];
   pokemonGenderList: PokemonGender[];
 }
 

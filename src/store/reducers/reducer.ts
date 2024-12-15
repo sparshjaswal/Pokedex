@@ -14,13 +14,13 @@ export type ActionType =
     | { type: "ACTIONS.SET_POKEMON_ID"; payload: number | null };
 
 export const initialState: PokemonState = {
-    pokemonsList: [],
-    allPokemonsList: [],
+    pokemonList: [],
+    allPokemonList: [],
     pokemonSelectedId: null,
     pokemonData: null,
     isLoading: true,
     isLoadMoreInprogress: false,
-    pokemonsTypes: [],
+    pokemonTypes: [],
     pokemonGenderList: [],
 };
 
@@ -29,22 +29,22 @@ export const reducer = (state: PokemonState, action: ActionType): PokemonState =
         case "ACTIONS.SET_POKEMON_LIST":
             return {
                 ...state,
-                pokemonsList: [...state.pokemonsList, ...action.payload],
+                pokemonList: [...state.pokemonList, ...action.payload],
             };
         case "ACTIONS.SET_ALL_POKEMON_LIST":
             return {
                 ...state,
-                allPokemonsList: action.payload,
+                allPokemonList: action.payload,
             };
         case "ACTIONS.SET_FILTERED_POKEMON_LIST":
             return {
                 ...state,
-                pokemonsList: action.payload,
+                pokemonList: action.payload,
             };
         case "ACTIONS.SET_POKEMON_TYPE":
             return {
                 ...state,
-                pokemonsTypes: action.payload,
+                pokemonTypes: action.payload,
             };
         case "ACTIONS.SET_POKEMON_GENDER_LIST":
             return {

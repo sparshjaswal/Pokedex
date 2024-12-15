@@ -12,7 +12,7 @@ import SearchFilter from './search/search.filter';
 
 const AppFilter: React.FC<AppFilterProps> = ({ isFilterEnable }) => {
     const { state, getPokemonData, dispatch, setAppLoading, getPokemonDetailsListByUrl } = useContext(PokemonContext);
-    const { allPokemonsList, pokemonsTypes, pokemonGenderList } = state;
+    const { allPokemonList, pokemonTypes, pokemonGenderList } = state;
 
     const [isOpenTypeFilter, setIsOpenTypeFilter] = useState<boolean>(false);
     const [isOpenGenderFilter, setIsOpenGenderFilter] = useState<boolean>(false);
@@ -45,9 +45,9 @@ const AppFilter: React.FC<AppFilterProps> = ({ isFilterEnable }) => {
         setAppLoading(true);
         if (value.length) {
             isFilterEnable(true);
-            data$ = of(allPokemonsList).pipe(debounceTime(4000),
-                distinctUntilChanged(), map((pokmons) => {
-                    return pokmons.filter((item: { name: string; }) => item.name.toLowerCase().indexOf(value.toLowerCase()) > -1)
+            data$ = of(allPokemonList).pipe(debounceTime(4000),
+                distinctUntilChanged(), map((pokemon) => {
+                    return pokemon.filter((item: { name: string; }) => item.name.toLowerCase().indexOf(value.toLowerCase()) > -1)
                 })
             );
         } else {
@@ -162,7 +162,7 @@ const AppFilter: React.FC<AppFilterProps> = ({ isFilterEnable }) => {
     useEffect(() => {
         getAllPokemonType();
         getPokemonGendersList();
-    }, [getAllPokemonType, getPokemonGendersList]);
+    }, []);
 
     return (
         <>
@@ -181,7 +181,7 @@ const AppFilter: React.FC<AppFilterProps> = ({ isFilterEnable }) => {
                                 <AppMultiSelectDropDown
                                     placeholder="Select Types"
                                     isOpen={isOpenTypeFilter}
-                                    data={pokemonsTypes}
+                                    data={pokemonTypes}
                                     label="Type"
                                     onChangeHandler={onTypeChangeHandler} onOpenHandler={onOpenTypeHandler} onCloseHandler={onCloseTypeHandler} onCleanHandler={onCleanTypeHandler}
                                 />

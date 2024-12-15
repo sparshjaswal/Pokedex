@@ -3,7 +3,7 @@ import Header from "../../components/header/header";
 import "./home.scss";
 import "../../styles/common.scss";
 import PokemonCard from "../../components/pokemonCard/pokemonCard";
-import Apploader from "../../components/loader/loader";
+import AppLoader from "../../components/loader/loader";
 import PokemonContext from "../../context/pokemonContext/pokemon.context";
 import DetailPage from "../details/details.page";
 import { Button, Col, Row } from "rsuite";
@@ -17,11 +17,11 @@ const HomePage = () => {
 
 
   const { state, getPokemonData } = useContext(PokemonContext);
-  const { pokemonsList, isLoading, isLoadMoreInprogress } = state;
+  const { pokemonList, isLoading, isLoadMoreInprogress } = state;
 
-  const pokemonsListView = useMemo(
+  const pokemonListView = useMemo(
   () =>
-    pokemonsList?.map((data, index) => (
+    pokemonList?.map((data, index) => (
       <div key={`${data.id}-${index}`} className="responsive">
         <PokemonCard key={data.id} data={data} onClick={() => {
           setPokemonId(data.id);
@@ -29,7 +29,7 @@ const HomePage = () => {
         }} />
       </div>
     )),
-  [pokemonsList]
+  [pokemonList]
 );
 
   const handleLoadMoreClick = () => {
@@ -43,8 +43,6 @@ const HomePage = () => {
   const isFilterEnableHandler = (isEnable) => {
     setIsFilterEnable(isEnable);
   }
-
-  // if (isLoading) return (<Apploader className="app-loader-wrapper" />);
 
   return (
     <>
@@ -72,12 +70,12 @@ const HomePage = () => {
             <AppFilter  isFilterEnable={isFilterEnableHandler} />
           </div>
         </div>
-        {pokemonsList.length > 0 && (<div>
+        {pokemonList.length > 0 && (<div>
           <div className="card-list">
-            {pokemonsListView}
+            {pokemonListView}
           </div>
           <div>
-            {isLoadMoreInprogress && <Apploader className="loadmore-loader" />}
+            {isLoadMoreInprogress && <AppLoader className="loadmore-loader" />}
           </div>
           {!isFilterEnable && (
             <div className="load-more-wrap">
@@ -85,14 +83,14 @@ const HomePage = () => {
             </div>
           )}
         </div>)}
-        {(!pokemonsList.length) && (
+        {(!pokemonList.length) && (
           <div className="no-data-found"><span>No data found</span></div>
         )}
         {isLoading && (
-          <Apploader className="app-loader-wrapper" />
+          <AppLoader className="app-loader-wrapper" />
         )}
         <div>
-          {isCardSelected && (<DetailPage isCardSelected={isCardSelected} toggleModal={toggleModal} pokemonId={pokemonId} offset={pokemonsList.length} />)}
+          {isCardSelected && (<DetailPage isCardSelected={isCardSelected} toggleModal={toggleModal} pokemonId={pokemonId} offset={pokemonList.length} />)}
         </div>
       </div>
     </>

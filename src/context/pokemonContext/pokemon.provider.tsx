@@ -37,20 +37,20 @@ export const PokemonProvider: React.FC<{
         const { next, results }: { next: string; results: Pokemon[] } = await resp.json();
 
         batchURL.current = next;
-        const pokemonsList = await getPokemonDetailsListByUrl(results);
-        setPokemonList(pokemonsList);
+        const pokemonList = await getPokemonDetailsListByUrl(results);
+        setPokemonList(pokemonList);
         setLoadMoreDataInprogress(false);
     };
 
     const getPokemonDetailsListByUrl = async (results: Pokemon[]): Promise<Pokemon[]> => {
-        const pokemonsDetailsList = await Promise.all(
+        const pokemonDetailsList = await Promise.all(
             results.map(async (pokemon) => {
                 const response = await fetch(pokemon.url);
                 const res: Pokemon = await response.json();
                 return res;
             })
         );
-        return pokemonsDetailsList;
+        return pokemonDetailsList;
     };
 
     const getAllPokemonDataList = async () => {
@@ -62,10 +62,10 @@ export const PokemonProvider: React.FC<{
         });
     };
 
-    const setPokemonList = (pokemonsList: Pokemon[]) => {
+    const setPokemonList = (pokemonList: Pokemon[]) => {
         dispatch({
             type: "ACTIONS.SET_POKEMON_LIST",
-            payload: pokemonsList
+            payload: pokemonList
         });
     };
 
