@@ -1,9 +1,9 @@
 import React from 'react';
 import { Loader } from "rsuite";
-import { ApploaderProps } from "../../constants/pokemon.types"
+import { AppLoaderProps } from "../../constants/pokemon.types"
 
 
-const Apploader: React.FC<ApploaderProps> = ({ className }) => {
+const AppLoader: React.FC<AppLoaderProps> = ({ className }) => {
     return (
         <div className={className}>
             <Loader size="md" content="Loading..." />
@@ -11,4 +11,4 @@ const Apploader: React.FC<ApploaderProps> = ({ className }) => {
     );
 }
 
-export default Apploader;
+export default AppLoader;

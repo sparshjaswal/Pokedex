@@ -172,7 +172,7 @@ export interface PropertyCardProps {
   };
 }
 
-export interface ApploaderProps {
+export interface AppLoaderProps {
   className?: string;
 }
 
