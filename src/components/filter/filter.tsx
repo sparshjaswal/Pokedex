@@ -7,7 +7,7 @@ import { getCamelCaseString } from '../../constants/utils';
 import PokemonContext from '../../context/pokemonContext/pokemon.context';
 import { getAllParallelCall, getPokemonGenders, getPokemonTypes, removeDuplicateBy } from '../../services/common.service';
 import "./filter.scss";
-import AppMultiSelectDropDown from './multiSelectdropDown/multiSelectDropDown';
+import AppMultiSelectDropDown from './multiSelectDropDown/multiSelectDropDown';
 import SearchFilter from './search/search.filter';
 
 const AppFilter: React.FC<AppFilterProps> = ({ isFilterEnable }) => {
@@ -162,7 +162,7 @@ const AppFilter: React.FC<AppFilterProps> = ({ isFilterEnable }) => {
     useEffect(() => {
         getAllPokemonType();
         getPokemonGendersList();
-    }, []);
+    }, [getAllPokemonType, getPokemonGendersList]);
 
     return (
         <>

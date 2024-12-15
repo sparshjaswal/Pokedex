@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckPicker } from 'rsuite';
-import "./multiSelectdropDown.scss";
+import "./multiSelectDropDown.scss";
 import { AppMultiSelectDropDownProps } from "../../../constants/pokemon.types"
 
 const AppMultiSelectDropDown: React.FC<AppMultiSelectDropDownProps> = ({
