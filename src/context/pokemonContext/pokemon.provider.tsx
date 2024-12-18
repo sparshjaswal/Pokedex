@@ -6,6 +6,7 @@ import {
     initialURL
 } from "../../services/common.service";
 import { Pokemon } from "../../constants/pokemon.types";
+import { JSX } from "react/jsx-runtime";
 
 export const PokemonProvider: React.FC<{
     children: ReactNode;

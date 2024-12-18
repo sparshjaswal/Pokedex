@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import AppTooltip from './tooltip';
+import AppTooltip from '../hooks/tooltip/tooltip';
 
 describe('AppTooltip Component', () => {
   const tooltipContent = "This is a tooltip";

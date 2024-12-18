@@ -9,7 +9,7 @@ import {
   numberFormation,
   getAllParallelCall,
   removeDuplicateBy,
-} from './common.service'; // Adjust the import path accordingly
+} from '../services/common.service'; // Adjust the import path accordingly
 
 // Mock the fetch API
 global.fetch = jest.fn();
