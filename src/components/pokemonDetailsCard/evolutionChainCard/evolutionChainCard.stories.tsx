@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import EvolutionChainCard from './evolutionChainCard';
 import { PokemonCardProps } from '../../../constants/pokemon.types';
-import data from '../../../__test__/sample';
+import data from '../sample';
 
 export default {
   title: 'Components/EvolutionChainCard',
